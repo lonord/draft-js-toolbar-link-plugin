@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"module": "commonjs",
+		"jsx": "react",
+		"target": "es5",
+		"outDir": "./lib",
+		"rootDir": "./src",
+		"allowSyntheticDefaultImports": true
+	},
+	"include": [
+		"./src/**/*"
+	]
+}

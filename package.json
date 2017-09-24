@@ -1,0 +1,56 @@
+{
+  "name": "draft-js-toolbar-link-plugin",
+  "version": "1.0.0",
+  "description": "This is a plugin for the `draft-js-plugins-editor`, basing on `draft-js-plugin-editor-toolbar-picker` and working together with `draft-js-static-toolbar-plugin`.",
+  "main": "lib/",
+  "types": "lib/",
+  "scripts": {
+    "dev": "reeasy -w example dev",
+    "build": "rimraf lib && tsc -d",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lonord/draft-js-toolbar-link-plugin.git"
+  },
+  "keywords": [
+    "react",
+    "draft",
+    "plugin",
+    "link",
+    "toolbar"
+  ],
+  "author": "Loy B. <lonord@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lonord/draft-js-toolbar-link-plugin/issues"
+  },
+  "homepage": "https://github.com/lonord/draft-js-toolbar-link-plugin#readme",
+  "devDependencies": {
+    "react-render-order-fixer": "^1.0.0",
+    "@types/debug": "0.0.30",
+    "@types/draft-js": "^0.10.12",
+    "@types/react": "^16.0.5",
+    "awesome-typescript-loader": "^3.2.3",
+    "css-loader": "^0.28.7",
+    "draft-js": "^0.10.1",
+    "draft-js-plugins-editor": "^2.0.0-beta1",
+    "draft-js-static-toolbar-plugin": "^2.0.0-rc4",
+    "normalize.css": "^7.0.0",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "reeasy": "^0.5.14",
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.18.2",
+    "tslint": "^5.7.0",
+    "tslint-react": "^3.2.0",
+    "typescript": "^2.5.2"
+  },
+  "dependencies": {
+    "debug": "^3.0.1",
+    "decorate-component-with-props": "^1.0.2",
+    "draft-js-plugin-editor-toolbar-picker": "^0.1.5",
+    "styled-components": "^2.1.2",
+    "union-class-names": "^1.0.0"
+  }
+}
