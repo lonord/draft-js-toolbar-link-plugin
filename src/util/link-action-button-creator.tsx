@@ -1,14 +1,5 @@
 import * as React from 'react'
-import styled from 'styled-components'
-
-const Button = styled.button`
-	${props => props.disabled
-		? `
-			cursor: not-allowed;
-			opacity: 0.5;
-		`
-		: ''}
-`
+import { ItemButton } from '../component/styled'
 
 export interface ActionButtonProps {
 	theme?: any
@@ -30,7 +21,7 @@ export default ({ children }) => (
 			const { theme, isDisabled } = this.props
 			return (
 				<div className={theme.buttonWrapper} onMouseDown={this.preventBubblingUp}>
-					<Button
+					<ItemButton
 						className={theme.button}
 						onClick={this.handleClick}
 						disabled={!!isDisabled}

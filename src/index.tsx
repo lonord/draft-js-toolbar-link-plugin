@@ -10,6 +10,16 @@ import LinkTriggerButton from './component/link-trigger-button'
 import { AnchorComponentClass, URLInputComponentClass, URLInputWrapperComponentClass } from './component/styled'
 import { findLinkEntityRanges, isCurrentEntityLink } from './util/link-entity-util'
 
+export {
+	AnchorProps,
+	AnchorComponentClass,
+	Anchor,
+	URLInputComponentClass,
+	URLInput,
+	URLInputWrapperComponentClass,
+	URLInputWrapper
+} from './component/styled'
+
 const d = debug('draft-js-toolbar-link-plugin:example')
 
 interface PluginFunctions {

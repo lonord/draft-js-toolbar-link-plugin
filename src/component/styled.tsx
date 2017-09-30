@@ -34,3 +34,12 @@ export type URLInputWrapperComponentClass = StyledComponentClass<any, any>
 export const URLInputWrapper = styled.div`
 	display: inline-block;
 ` as URLInputWrapperComponentClass
+
+export const ItemButton = styled.button`
+	${props => props.disabled
+		? `
+			cursor: not-allowed;
+			opacity: 0.5;
+		`
+		: ''}
+`
