@@ -1,11 +1,23 @@
 import * as React from 'react'
 
+import { EditorState } from 'draft-js'
 import { createOrUpdateLinkEntity, getCurrentEntityLinkUrl, removeLinkEntity } from '../util/link-entity-util'
 import LinkCommitButton from './link-commit-button'
 import LinkRemoveButton from './link-remove-button'
 import LinkUrlInput from './link-url-input'
+import { URLInputComponentClass, URLInputWrapperComponentClass } from './styled'
 
-export default class LinkSubMenu extends React.Component<any, any> {
+export interface LinkSubMenuProps {
+	setEditorState?(editorState: EditorState)
+	getEditorState?(): EditorState
+	onPickerClose?()
+	inputPlaceholder?: string
+	urlInputTheme?: { wrapper: string, input: string }
+	wrapperComponent?: URLInputWrapperComponentClass
+	inputComponent?: URLInputComponentClass
+}
+
+export default class LinkSubMenu extends React.Component<LinkSubMenuProps, any> {
 
 	componentDidMount() {
 		const { getEditorState } = this.props
@@ -44,14 +56,16 @@ export default class LinkSubMenu extends React.Component<any, any> {
 	}
 
 	render() {
-		const { overrideInputClass, overrideInputPlaceholder, ...rest } = this.props
+		const { urlInputTheme, inputPlaceholder, wrapperComponent, inputComponent, ...rest } = this.props
 		return (
 			<span>
 				<LinkUrlInput
 					value={this.state.inputValue}
 					onChange={this.handleInputChange}
-					placeholder={overrideInputPlaceholder}
-					className={overrideInputClass}/>
+					placeholder={inputPlaceholder}
+					theme={urlInputTheme}
+					wrapperComponent={wrapperComponent}
+					inputComponent={inputComponent}/>
 				<LinkCommitButton isDisabled={!this.state.inputValue} onClick={this.handleCommitClick} {...rest} />
 				<LinkRemoveButton onClick={this.handleRemoveClick} {...rest}/>
 			</span>

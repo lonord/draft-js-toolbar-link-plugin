@@ -70,7 +70,7 @@ const Button = styled.button`
 `
 
 const toolbarLinkPlugin = createToolbarLinkPlugin()
-const { Link } = toolbarLinkPlugin
+const { LinkButton } = toolbarLinkPlugin
 
 const toolbarPlugin = createToolbarPlugin({
 	structure: [
@@ -78,13 +78,12 @@ const toolbarPlugin = createToolbarPlugin({
 		ItalicButton,
 		UnderlineButton,
 		CodeButton,
+		LinkButton,
 		Separator,
 		UnorderedListButton,
 		OrderedListButton,
 		BlockquoteButton,
-		CodeBlockButton,
-		Separator,
-		Link
+		CodeBlockButton
 	]
 })
 

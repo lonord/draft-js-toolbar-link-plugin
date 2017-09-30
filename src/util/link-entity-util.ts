@@ -1,4 +1,4 @@
-import { EditorState, Entity, Modifier, SelectionState } from 'draft-js'
+import { ContentBlock, ContentState, EditorState, Entity, Modifier, SelectionState } from 'draft-js'
 
 export function isCurrentEntityLink(editorState: EditorState): boolean {
 	if (!editorState) {
@@ -82,8 +82,8 @@ export function removeLinkEntity(editorState: EditorState): EditorState {
 		}, (start, end) => {
 			if (start <= sel.getStartOffset() && end >= sel.getStartOffset()) {
 				const newSel = sel.merge({
-					focusOffset: start,
-					anchorOffset: end
+					focusOffset: end,
+					anchorOffset: start
 				}) as SelectionState
 				const newContent = Modifier.applyEntity(
 					content,
@@ -95,4 +95,20 @@ export function removeLinkEntity(editorState: EditorState): EditorState {
 		})
 	}
 	return editorState
+}
+
+export function findLinkEntityRanges(contentBlock: ContentBlock, callback: (start: number, end: number) => void) {
+	if (!contentBlock) {
+		return
+	}
+	contentBlock.findEntityRanges((value) => {
+		const entityKey = value.getEntity()
+		if (entityKey) {
+			const entity = Entity.get(entityKey)
+			if (entity) {
+				return entity.getType().toUpperCase() === 'LINK'
+			}
+		}
+		return false
+	}, callback)
 }
