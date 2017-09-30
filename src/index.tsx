@@ -82,7 +82,7 @@ export default function createToolbarLinkPlugin(options?: ToolbarLinkPluginOptio
 	}
 
 	return {
-		initialize: (fns: PluginFunctions) => {
+		initialize: (fns) => {
 			pluginFunctions = fns
 		},
 		decorators: [{

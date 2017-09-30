@@ -2,7 +2,7 @@ import { ContentState } from 'draft-js'
 import * as React from 'react'
 import { Anchor as DefaultAnchor, AnchorComponentClass } from './styled'
 
-interface LinkProps {
+export interface LinkProps {
 	onClick?(e: React.MouseEvent<HTMLAnchorElement>, url: string)
 	theme?: { anchor: string, anchorSelect: string }
 	target?: string
