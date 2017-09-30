@@ -34,7 +34,7 @@
     "awesome-typescript-loader": "^3.2.3",
     "css-loader": "^0.28.7",
     "draft-js": "^0.10.1",
-    "draft-js-plugins-editor": "^2.0.0-beta1",
+    "draft-js-plugins-editor": "^2.0.0-rc8",
     "draft-js-static-toolbar-plugin": "^2.0.0-rc4",
     "normalize.css": "^7.0.0",
     "react": "^15.6.1",

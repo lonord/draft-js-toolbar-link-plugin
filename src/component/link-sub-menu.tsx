@@ -11,6 +11,7 @@ export interface LinkSubMenuProps {
 	setEditorState?(editorState: EditorState)
 	getEditorState?(): EditorState
 	onPickerClose?()
+	requestEditorFocus?()
 	inputPlaceholder?: string
 	urlInputTheme?: { wrapper: string, input: string }
 	wrapperComponent?: URLInputWrapperComponentClass
@@ -40,19 +41,27 @@ export default class LinkSubMenu extends React.Component<LinkSubMenuProps, any> 
 	}
 
 	handleCommitClick = () => {
-		const { onPickerClose, setEditorState, getEditorState } = this.props
+		const { onPickerClose, setEditorState, getEditorState, requestEditorFocus } = this.props
 		if (setEditorState && getEditorState) {
 			setEditorState(createOrUpdateLinkEntity(getEditorState(), this.state.inputValue))
 		}
 		onPickerClose && onPickerClose()
+		setTimeout(() => requestEditorFocus && requestEditorFocus(), 100)
 	}
 
 	handleRemoveClick = () => {
-		const { onPickerClose, setEditorState, getEditorState } = this.props
+		const { onPickerClose, setEditorState, getEditorState, requestEditorFocus } = this.props
 		if (setEditorState && getEditorState) {
 			setEditorState(removeLinkEntity(getEditorState()))
 		}
 		onPickerClose && onPickerClose()
+		setTimeout(() => requestEditorFocus && requestEditorFocus(), 100)
+	}
+
+	handleKeyboardInputDismiss = () => {
+		const { onPickerClose, requestEditorFocus } = this.props
+		onPickerClose && onPickerClose()
+		requestEditorFocus && requestEditorFocus()
 	}
 
 	render() {
@@ -62,6 +71,8 @@ export default class LinkSubMenu extends React.Component<LinkSubMenuProps, any> 
 				<LinkUrlInput
 					value={this.state.inputValue}
 					onChange={this.handleInputChange}
+					onConfirm={this.handleCommitClick}
+					onDismiss={this.handleKeyboardInputDismiss}
 					placeholder={inputPlaceholder}
 					theme={urlInputTheme}
 					wrapperComponent={wrapperComponent}

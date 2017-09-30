@@ -3,7 +3,7 @@ import decorateComponentWithProps from 'decorate-component-with-props'
 import createPicker from 'draft-js-plugin-editor-toolbar-picker'
 import * as React from 'react'
 
-import { ContentBlock, EditorState } from 'draft-js'
+import { ContentBlock, Editor, EditorState } from 'draft-js'
 import Link from './component/link'
 import LinkSubMenu from './component/link-sub-menu'
 import LinkTriggerButton from './component/link-trigger-button'
@@ -16,6 +16,7 @@ interface PluginFunctions {
 	setEditorState(editorState: EditorState)
 	getEditorState(): EditorState
 	getReadOnly(): boolean
+	getEditorRef(): Editor
 }
 
 export interface ToolbarLinkPluginOptions {
@@ -45,11 +46,16 @@ export default function createToolbarLinkPlugin(options?: ToolbarLinkPluginOptio
 		triggerItem: decorateComponentWithProps(LinkTriggerButton, { styleIsActive: isLinkActive }),
 		items: [
 			decorateComponentWithProps(LinkSubMenu, {
-				theme: inputTheme,
+				urlInputTheme: inputTheme,
 				inputPlaceholder,
 				inputComponent,
 				wrapperComponent: inputWrapperComponent,
-				...{ pluginFunctions }
+				requestEditorFocus: () => {
+					if (pluginFunctions && pluginFunctions.getEditorRef) {
+						const editor = pluginFunctions.getEditorRef()
+						editor.focus()
+					}
+				}
 			})
 		]
 	})
