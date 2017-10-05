@@ -1,6 +1,7 @@
-import 'normalize.css'
+import 'babel-polyfill'
 
 import 'draft-js-static-toolbar-plugin/lib/plugin.css'
+import 'normalize.css'
 
 import debug from 'debug'
 import { ContentState, convertFromHTML, convertFromRaw, convertToRaw, EditorState, SelectionState } from 'draft-js'
