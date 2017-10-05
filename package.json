@@ -1,6 +1,6 @@
 {
   "name": "draft-js-toolbar-link-plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This is a plugin for the `draft-js-plugins-editor`, basing on `draft-js-plugin-editor-toolbar-picker` and working together with `draft-js-static-toolbar-plugin`.",
   "main": "lib/",
   "types": "lib/",

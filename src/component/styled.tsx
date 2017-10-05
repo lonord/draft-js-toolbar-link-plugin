@@ -10,7 +10,7 @@ export const Anchor = styled.a`
 export type URLInputComponentClass = StyledComponentClass<React.HTMLProps<HTMLInputElement>, any>
 export const URLInput = styled.input`
 	outline: none;
-	vertical-align: bottom;
+	vertical-align: text-bottom;
 	height: 34px;
 	width: 250px;
 	padding: 0px 5px;
